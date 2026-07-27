@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentos Legales – GX Live · GX Interactive</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #E8000D;
+    --bg: #0a0a0a;
+    --bg-card: #111111;
+    --border: #222222;
+    --text: #f0f0f0;
+    --text-muted: #8a8a8a;
+    --text-sub: #c0c0c0;
+    --font-display: "Barlow Condensed", "Impact", sans-serif;
+    --font-body: "Inter", sans-serif;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .topbar { background: #000; border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .topbar-brand { font-family: var(--font-display); font-weight: 900; font-size: 18px; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+  .topbar-brand span { color: var(--red); }
+  .nav-tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+  .tab-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 16px; cursor: pointer; transition: all 0.15s; }
+  .tab-btn:hover, .tab-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+  .doc-panel { display: none; max-width: 820px; margin: 0 auto; padding: 64px 24px 96px; }
+  .doc-panel.active { display: block; }
+  .doc-eyebrow { display: inline-block; background: var(--red); color: #fff; font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 16px; }
+  .doc-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 52px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.0; margin-bottom: 8px; }
+  .doc-title .accent { color: var(--red); }
+  .doc-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+  .doc-section { margin-bottom: 40px; }
+  .doc-section h2 { font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--red); margin-bottom: 12px; }
+  .doc-section p, .doc-section li { font-size: 15px; color: var(--text-sub); line-height: 1.8; margin-bottom: 10px; }
+  .doc-section ul, .doc-section ol { padding-left: 20px; }
+  .doc-section li { margin-bottom: 6px; }
+  .highlight-box { background: var(--bg-card); border-left: 3px solid var(--red); padding: 16px 20px; margin: 16px 0; }
+  .highlight-box p { margin: 0; color: var(--text); font-weight: 500; }
+  footer { background: #000; border-top: 1px solid var(--border); text-align: center; padding: 32px; font-size: 12px; color: #444; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="index.html" class="topbar-brand">GX <span>INTERACTIVE</span></a>
+  <nav class="nav-tabs">
+    <button class="tab-btn active" onclick="showDoc('terminos')">Términos de Uso</button>
+    <button class="tab-btn" onclick="showDoc('privacidad')">Política de Privacidad</button>
+    <button class="tab-btn" onclick="showDoc('reembolso')">Política de Reembolso</button>
+  </nav>
+</div>
+
+<!-- ════════════════════════════════════════
+     DOC 1: TÉRMINOS DE USO / EULA
+═════════════════════════════════════════ -->
+<div id="terminos" class="doc-panel active">
+  <div class="doc-eyebrow">Documento legal</div>
+  <h1 class="doc-title">Términos de Uso<br>& Licencia de Usuario Final</h1>
+  <p class="doc-meta">GX Interactive · GX Live · Última actualización: julio de 2026</p>
+
+  <div class="doc-section">
+    <h2>1. Aceptación</h2>
+    <p>Al descargar, instalar, suscribirte o utilizar GX Live ("la Aplicación"), aceptás en su totalidad los presentes Términos de Uso y Licencia de Usuario Final (EULA). Si no estás de acuerdo con alguna de estas condiciones, no debés usar la Aplicación.</p>
+    <p>La Aplicación es desarrollada y distribuida por GX Interactive, operado individualmente por su autor ("el Desarrollador").</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. Planes y licencia otorgada</h2>
+    <p>GX Live está disponible en dos planes:</p>
+    <ul>
+      <li><strong>Plan Free:</strong> acceso gratuito con funcionalidades limitadas. No requiere pago ni suscripción.</li>
+      <li><strong>Plan PRO:</strong> suscripción mensual de $14,99 USD con acceso completo a todas las funciones. La licencia PRO queda vinculada a tu cuenta de Google y sigue activa mientras la suscripción esté vigente.</li>
+    </ul>
+    <p>En ambos casos, el Desarrollador te otorga una licencia personal, no exclusiva, no transferible para instalar y usar GX Live en dispositivos propios con fines de entretenimiento o streaming.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. Restricciones</h2>
+    <p>Queda expresamente <strong>prohibido</strong>:</p>
+    <ul>
+      <li>Copiar, redistribuir, revender, sublicenciar o compartir la Aplicación o cualquier parte de ella.</li>
+      <li>Aplicar ingeniería inversa, descompilar, desensamblar o intentar extraer el código fuente de la Aplicación.</li>
+      <li>Eludir, desactivar o manipular los mecanismos de verificación de plan (Firebase, servidor de validación de Gumroad).</li>
+      <li>Compartir credenciales de cuenta para que terceros accedan al Plan PRO sin suscripción propia.</li>
+      <li>Presentar la Aplicación como propia o eliminar atribuciones al Desarrollador.</li>
+    </ul>
+    <div class="highlight-box">
+      <p>La Aplicación incluye verificación de plan en tiempo real mediante Firebase. Cualquier intento de eludir este sistema constituye una violación de esta licencia y puede resultar en la desactivación inmediata de la cuenta.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. Vinculación a la cuenta</h2>
+    <p>El Plan PRO queda vinculado a tu cuenta de Google. Si cambiás de dispositivo, simplemente iniciás sesión con la misma cuenta y el plan se restaura automáticamente — sin necesidad de contactar soporte ni reactivación manual.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Actualizaciones</h2>
+    <p>La suscripción PRO incluye acceso a todas las actualizaciones publicadas durante el período activo. El Plan Free también recibe actualizaciones dentro de sus funcionalidades disponibles. El Desarrollador no tiene obligación de publicar actualizaciones en plazos determinados ni de mantener compatibilidad con versiones futuras de TikTok Live o sus APIs.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>6. Compatibilidad y requisitos</h2>
+    <p>GX Live requiere:</p>
+    <ul>
+      <li>Windows 10 / 11 (64 bits)</li>
+      <li>Cuenta de TikTok activa con acceso a TikTok Live</li>
+      <li>Conexión a internet para autenticación y conexión al Live</li>
+      <li>GTA V — solo requerido si también utilizás la integración con GX Survival Mod</li>
+    </ul>
+    <p>La compatibilidad con cambios en la API de TikTok, actualizaciones del sistema operativo u otras herramientas de terceros no está garantizada y puede requerir actualizaciones de la Aplicación.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>7. Propiedad intelectual</h2>
+    <p>La Aplicación, su código, lógica, diseño e interfaz son propiedad exclusiva del Desarrollador. Esta licencia no transfiere ningún derecho de propiedad. TikTok y sus marcas son propiedad de ByteDance Ltd. GTA V y sus activos son propiedad de Rockstar Games / Take-Two Interactive. El Desarrollador no tiene afiliación con ninguna de estas empresas.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>8. Exclusión de garantías</h2>
+    <p>La Aplicación se provee "tal como está" ("AS IS"), sin garantías de ningún tipo. El Desarrollador no garantiza disponibilidad ininterrumpida del servicio, compatibilidad permanente con la plataforma de TikTok, ni ausencia de errores. El uso de la Aplicación es bajo tu propio riesgo.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>9. Limitación de responsabilidad</h2>
+    <p>En ningún caso el Desarrollador será responsable por daños directos, indirectos, incidentales o consecuentes derivados del uso o la imposibilidad de usar la Aplicación, incluyendo pérdida de datos, interrupciones en transmisiones en vivo, cambios en las APIs de TikTok que afecten el funcionamiento, o sanciones en cuentas de terceras plataformas.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>10. Terminación</h2>
+    <p>Esta licencia se extingue automáticamente si incumplís cualquiera de sus términos. Ante el incumplimiento, el Desarrollador puede desactivar el acceso a la cuenta de forma inmediata, sin obligación de reembolso. El Plan PRO también se desactiva automáticamente si la suscripción en Gumroad es cancelada o el pago falla.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>11. Contacto</h2>
+    <p>Para consultas sobre esta licencia o soporte general: <strong>Discord oficial de GX Interactive</strong> → <a href="https://discord.gg/Q2HD5RZ5e" style="color:var(--red);">discord.gg/Q2HD5RZ5e</a></p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     DOC 2: POLÍTICA DE PRIVACIDAD
+═════════════════════════════════════════ -->
+<div id="privacidad" class="doc-panel">
+  <div class="doc-eyebrow">Documento legal</div>
+  <h1 class="doc-title">Política de<br>Privacidad</h1>
+  <p class="doc-meta">GX Interactive · GX Live · Última actualización: julio de 2026</p>
+
+  <div class="doc-section">
+    <h2>1. Quién recopila los datos</h2>
+    <p>GX Interactive, operado individualmente por su autor ("el Desarrollador"), es el responsable del tratamiento de los datos descritos en esta política en relación con el uso de GX Live.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. Qué datos recopilamos</h2>
+    <p>Al instalar y usar GX Live, la Aplicación recopila y utiliza los siguientes datos:</p>
+    <ul>
+      <li><strong>Correo electrónico y cuenta de Google:</strong> usados exclusivamente para autenticación mediante Firebase y para verificar si la cuenta tiene un Plan PRO activo en Gumroad.</li>
+      <li><strong>Estado del plan:</strong> si la cuenta tiene una suscripción PRO activa o no. Este dato se consulta al servidor de GX Interactive al iniciar sesión.</li>
+      <li><strong>Eventos de TikTok Live:</strong> regalos, likes, follows, shares y comentarios recibidos durante el stream. Estos datos se procesan en tiempo real localmente en tu dispositivo y no se almacenan en servidores externos.</li>
+    </ul>
+    <p>No recopilamos: nombre completo, dirección física, contraseñas, datos de pago, contenido del chat almacenado, ni información de uso dentro de GTA V.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. Para qué usamos los datos</h2>
+    <ul>
+      <li>Autenticar tu identidad y mantener la sesión activa dentro de la Aplicación.</li>
+      <li>Verificar que la cuenta tiene un Plan PRO activo y habilitar las funciones correspondientes.</li>
+      <li>Procesar los eventos de TikTok Live para disparar acciones en tiempo real dentro del juego.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. Almacenamiento y seguridad</h2>
+    <p>Los datos de autenticación son gestionados por Firebase (Google) bajo sus propias políticas de privacidad y seguridad. El estado del plan se almacena en una base de datos en Railway.app, protegida por contraseña. Los eventos de TikTok Live se procesan únicamente en tu dispositivo local — no se envían ni almacenan en ningún servidor externo.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Compartir datos con terceros</h2>
+    <p>No vendemos ni compartimos tus datos con terceros con fines comerciales. Los únicos terceros involucrados son:</p>
+    <ul>
+      <li><strong>Firebase (Google):</strong> gestión de autenticación.</li>
+      <li><strong>Gumroad:</strong> procesamiento de pagos y verificación de suscripción activa.</li>
+      <li><strong>Railway.app:</strong> infraestructura del servidor de verificación de plan.</li>
+    </ul>
+    <p>Cada uno de estos proveedores opera bajo sus propias políticas de privacidad.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>6. Retención de datos</h2>
+    <p>Los datos de cuenta se conservan mientras la cuenta esté activa en la Aplicación. Si solicitás la eliminación de tu cuenta, el Desarrollador eliminará los registros asociados en un plazo razonable. Los eventos de TikTok Live no se almacenan — se descartan una vez procesados.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>7. Tus derechos</h2>
+    <p>Podés solicitar en cualquier momento:</p>
+    <ul>
+      <li>Acceso a los datos asociados a tu cuenta.</li>
+      <li>Corrección de datos erróneos.</li>
+      <li>Eliminación de tu cuenta y datos del sistema.</li>
+    </ul>
+    <p>Para ejercer estos derechos, contactanos por Discord: <a href="https://discord.gg/Q2HD5RZ5e" style="color:var(--red);">discord.gg/Q2HD5RZ5e</a></p>
+  </div>
+
+  <div class="doc-section">
+    <h2>8. Cambios a esta política</h2>
+    <p>El Desarrollador puede actualizar esta política en cualquier momento. Los cambios se publicarán en esta página con la fecha de actualización. El uso continuado de la Aplicación después de la publicación implica la aceptación de los cambios.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     DOC 3: POLÍTICA DE REEMBOLSO
+═════════════════════════════════════════ -->
+<div id="reembolso" class="doc-panel">
+  <div class="doc-eyebrow">Documento legal</div>
+  <h1 class="doc-title">Política de<br>Reembolso</h1>
+  <p class="doc-meta">GX Interactive · GX Live · Última actualización: julio de 2026</p>
+
+  <div class="doc-section">
+    <h2>1. Naturaleza del producto</h2>
+    <p>GX Live PRO es una suscripción mensual con acceso inmediato a todas las funciones PRO al momento del pago. Al suscribirte, el plan se activa de forma instantánea en tu cuenta.</p>
+    <div class="highlight-box">
+      <p>Como regla general, <strong>no se emiten reembolsos por períodos de suscripción ya utilizados</strong>. Al completar la suscripción aceptás esta condición.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. Excepciones donde sí procesamos reembolso</h2>
+    <p>El Desarrollador evaluará solicitudes de reembolso únicamente en los siguientes casos:</p>
+    <ul>
+      <li><strong>Doble cobro comprobable:</strong> si se realizaron dos cargos en el mismo período, reembolsamos el duplicado.</li>
+      <li><strong>La Aplicación no funciona en absoluto:</strong> si tras seguir las instrucciones de instalación y soporte en Discord la Aplicación no puede iniciarse de ninguna forma en un equipo que cumpla los requisitos mínimos, evaluamos el caso dentro de los <strong>7 días</strong> posteriores al primer cobro.</li>
+      <li><strong>Cobro no autorizado:</strong> si el cargo fue realizado sin tu consentimiento y lo reportás dentro de las <strong>48 horas</strong> con evidencia de la transacción.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. Casos donde NO aplica reembolso</h2>
+    <ul>
+      <li>La Aplicación funciona correctamente pero TikTok realizó cambios en su plataforma que afectaron temporalmente alguna función.</li>
+      <li>Cambio de opinión después de la suscripción.</li>
+      <li>La cuenta de TikTok fue suspendida o perdió acceso a TikTok Live.</li>
+      <li>Problemas de compatibilidad con hardware que no cumple los requisitos mínimos.</li>
+      <li>Solicitudes realizadas después de los plazos indicados.</li>
+      <li>El usuario intentó eludir el sistema de verificación de plan.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. Cancelación de la suscripción</h2>
+    <p>Podés cancelar en cualquier momento desde tu cuenta de Gumroad sin penalizaciones. El Plan PRO se mantiene activo hasta el final del período ya pagado. Al vencer, la cuenta regresa automáticamente al Plan Free sin perder la configuración guardada.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Cómo solicitar un reembolso</h2>
+    <ol>
+      <li>Contactanos por Discord (<a href="https://discord.gg/Q2HD5RZ5e" style="color:var(--red);">discord.gg/Q2HD5RZ5e</a>) o TikTok (<a href="https://www.tiktok.com/@gxinteractive" style="color:var(--red);">@gxinteractive</a>) dentro del plazo correspondiente.</li>
+      <li>Proporcioná el comprobante de pago y una descripción del problema.</li>
+      <li>El equipo revisará el caso en un plazo de hasta 5 días hábiles.</li>
+      <li>Si el reembolso es aprobado, el Plan PRO será desactivado de forma simultánea.</li>
+    </ol>
+  </div>
+</div>
+
+<footer>© 2026 GX Interactive — Todos los derechos reservados.</footer>
+
+<script>
+  function showDoc(id) {
+    document.querySelectorAll('.doc-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
+</body>
+</html>
