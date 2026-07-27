@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Instalación – GX Mod Survival</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --red: #E8000D;
+    --bg: #0a0a0a;
+    --bg-card: #111111;
+    --bg-card2: #141414;
+    --border: #222222;
+    --text: #f0f0f0;
+    --text-muted: #8a8a8a;
+    --text-sub: #c0c0c0;
+    --font-display: "Barlow Condensed", "Impact", sans-serif;
+    --font-body: "Inter", sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  .topbar {
+    background: #000;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 40px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .topbar-brand { font-family: var(--font-display); font-weight: 900; font-size: 18px; letter-spacing: 0.1em; color: var(--text); text-decoration: none; }
+  .topbar-brand span { color: var(--red); }
+  .topbar-tag { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); border: 1px solid var(--border); padding: 5px 12px; }
+
+  .hero {
+    max-width: 900px; margin: 0 auto;
+    padding: 72px 40px 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-eyebrow { display: inline-block; background: var(--red); color: #fff; font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; padding: 4px 12px; margin-bottom: 20px; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(44px, 7vw, 80px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; line-height: 0.95; margin-bottom: 20px; }
+  .hero h1 span { color: var(--red); }
+  .hero-sub { font-size: 15px; color: var(--text-muted); max-width: 560px; line-height: 1.7; margin-bottom: 32px; }
+  .hero-meta { display: flex; gap: 32px; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .hero-meta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); }
+  .hero-meta-value { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); }
+
+  .layout { display: grid; grid-template-columns: 220px 1fr; max-width: 1100px; margin: 0 auto; gap: 0; }
+
+  .sidebar { border-right: 1px solid var(--border); padding: 48px 0; position: sticky; top: 57px; height: calc(100vh - 57px); overflow-y: auto; }
+  .sidebar-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); padding: 0 24px; margin-bottom: 12px; margin-top: 32px; }
+  .sidebar-label:first-child { margin-top: 0; }
+  .sidebar nav a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 24px;
+    font-size: 13px; font-weight: 500; color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .sidebar nav a:hover { color: var(--text); background: rgba(255,255,255,0.03); border-left-color: var(--border); }
+  .sidebar nav a.active { color: #fff; border-left-color: var(--red); background: rgba(232,0,13,0.05); }
+  .sidebar nav a .step-num { font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--red); min-width: 18px; }
+
+  .main { padding: 56px 48px 96px; }
+
+  .section { margin-bottom: 64px; padding-bottom: 64px; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+  .section-eyebrow { display: inline-block; background: var(--red); color: #fff; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 14px; }
+  .section h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.0; margin-bottom: 6px; }
+  .section-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; max-width: 560px; }
+
+  .step-block { margin-bottom: 36px; }
+  .step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .step-badge { background: var(--red); color: #fff; font-family: var(--font-display); font-size: 13px; font-weight: 900; letter-spacing: 0.08em; padding: 4px 10px; flex-shrink: 0; }
+  .step-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text); }
+  .step-body p, .step-body li { font-size: 14px; color: var(--text-sub); line-height: 1.8; margin-bottom: 8px; }
+  .step-body ul, .step-body ol { padding-left: 20px; margin-bottom: 12px; }
+  .step-body li { margin-bottom: 4px; }
+  .step-body strong { color: var(--text); font-weight: 600; }
+  .step-body code { background: #1a1a1a; border: 1px solid var(--border); color: #e0e0e0; font-size: 13px; padding: 2px 7px; font-family: "Courier New", monospace; }
+
+  .dep-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+  .dep-table th { background: #111; color: var(--text-muted); font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .dep-table td { padding: 12px 14px; border-bottom: 1px solid #1a1a1a; color: var(--text-sub); vertical-align: top; line-height: 1.6; }
+  .dep-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .dep-table .file-name { font-family: "Courier New", monospace; color: var(--text); font-size: 13px; }
+  .dep-table .source-link { color: var(--red); text-decoration: none; }
+  .dep-table .source-link:hover { text-decoration: underline; }
+
+  .folder-tree {
+    background: #0d0d0d; border: 1px solid var(--border);
+    padding: 24px 28px; margin: 20px 0;
+    font-family: "Courier New", monospace; font-size: 13px; line-height: 2;
+    color: var(--text-sub); overflow-x: auto;
+  }
+  .folder-tree .dir { color: #f0f0f0; font-weight: 700; }
+  .folder-tree .key-file { color: var(--red); }
+  .folder-tree .comment { color: var(--text-muted); font-style: italic; }
+
+  .alert { display: flex; gap: 14px; padding: 16px 20px; margin: 16px 0; border-left: 3px solid; }
+  .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .alert p { font-size: 14px; line-height: 1.7; margin: 0; }
+  .alert strong { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
+  .alert-warn { background: rgba(232,0,13,0.06); border-color: var(--red); }
+  .alert-warn p { color: #d0a0a0; }
+  .alert-warn strong { color: var(--red); }
+  .alert-tip { background: rgba(255,255,255,0.03); border-color: #333; }
+  .alert-tip p { color: var(--text-muted); }
+  .alert-tip strong { color: #888; }
+
+  .num-steps { counter-reset: step; padding: 0; list-style: none; margin: 16px 0; }
+  .num-steps li { counter-increment: step; display: flex; gap: 14px; margin-bottom: 14px; font-size: 14px; color: var(--text-sub); line-height: 1.7; }
+  .num-steps li::before { content: counter(step); background: var(--bg-card2); border: 1px solid var(--border); color: var(--red); font-family: var(--font-display); font-size: 13px; font-weight: 700; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px; }
+
+  .req-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px; background: var(--border); margin: 20px 0; }
+  .req-card { background: var(--bg-card); padding: 20px; }
+  .req-card-icon { font-size: 22px; margin-bottom: 10px; }
+  .req-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+  .req-card-value { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--text); line-height: 1.3; }
+
+  .flow-row { display: flex; align-items: stretch; gap: 0; margin: 24px 0; flex-wrap: wrap; }
+  .flow-item { flex: 1; min-width: 160px; background: var(--bg-card); border: 1px solid var(--border); padding: 20px 18px; position: relative; }
+  .flow-item + .flow-item { border-left: none; }
+  .flow-arrow { display: flex; align-items: center; padding: 0 4px; color: var(--red); font-size: 18px; flex-shrink: 0; }
+  .flow-num { font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.1em; margin-bottom: 6px; }
+  .flow-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; text-transform: uppercase; color: var(--text); margin-bottom: 4px; }
+  .flow-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  .trouble-item { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid #333; padding: 20px 24px; margin-bottom: 12px; transition: border-color 0.15s; cursor: pointer; }
+  .trouble-item:hover { border-left-color: var(--red); }
+  .trouble-q { font-family: var(--font-display); font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #e05050; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .trouble-q::before { content: "✕"; color: var(--red); font-size: 14px; }
+  .trouble-ans { font-size: 14px; color: var(--text-sub); line-height: 1.8; }
+  .trouble-ans ul { padding-left: 18px; }
+  .trouble-ans li { margin-bottom: 4px; }
+
+  /* ZIP structure box */
+  .zip-box { background: #0d0d0d; border: 1px solid var(--border); padding: 24px 28px; margin: 20px 0; font-family: "Courier New", monospace; font-size: 13px; line-height: 2.1; color: var(--text-sub); overflow-x: auto; }
+  .zip-box .dir { color: #f0f0f0; font-weight: 700; }
+  .zip-box .key-file { color: var(--red); }
+  .zip-box .comment { color: var(--text-muted); font-style: italic; }
+
+  .img-placeholder {
+    background: #0d0d0d;
+    border: 2px dashed #333;
+    border-radius: 2px;
+    padding: 32px 24px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 160px;
+    text-align: center;
+  }
+  .img-placeholder-icon { font-size: 32px; opacity: 0.4; }
+  .img-placeholder-label { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); opacity: 0.7; }
+  .img-placeholder-desc { font-size: 12px; color: var(--text-muted); max-width: 340px; line-height: 1.6; }
+  .img-real { width: 100%; border: 1px solid var(--border); margin: 20px 0; display: block; }
+
+  footer { background: #000; border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-brand { font-family: var(--font-display); font-size: 16px; font-weight: 900; letter-spacing: 0.1em; color: var(--text-muted); }
+  .footer-brand span { color: var(--red); }
+  .footer-copy { font-size: 12px; color: #3a3a3a; }
+
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .main { padding: 36px 24px 64px; }
+    .hero { padding: 48px 24px 40px; }
+    .topbar { padding: 14px 24px; }
+    .flow-row { flex-direction: column; }
+    .flow-item + .flow-item { border-left: 1px solid var(--border); border-top: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="topbar-brand" href="#">GX <span>INTERACTIVE</span></a>
+  <div class="topbar-tag">Guía de Instalación Oficial</div>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">GX Survival Mod — Documento Oficial</div>
+  <h1>Guía de<br><span>Instalación</span></h1>
+  <p class="hero-sub">Todo lo que necesitás para instalar GX Survival Mod en GTA V Story Mode y conectarlo con TikTok Live a través de GX Live. Seguí cada paso en orden.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Juego compatible</span>
+      <span class="hero-meta-value">GTA V Story Mode</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Plataforma</span>
+      <span class="hero-meta-value">Windows 10 / 11 · 64 bits</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Versión mínima GTA V</span>
+      <span class="hero-meta-value">1.0.2060.1 o superior</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Última actualización</span>
+      <span class="hero-meta-value">Julio 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-label">Contenido</div>
+    <nav>
+      <a href="#requisitos" class="active"><span class="step-num">01</span> Requisitos</a>
+      <a href="#contenido-zip"><span class="step-num">02</span> Contenido del ZIP</a>
+      <a href="#instalador"><span class="step-num">03</span> Instalar el Mod</a>
+      <a href="#personajes"><span class="step-num">04</span> Instalar Personajes</a>
+      <a href="#battleye"><span class="step-num">05</span> Deshabilitar BattlEye</a>
+      <a href="#gxlive"><span class="step-num">06</span> Conectar GX Live</a>
+      <a href="#licencia"><span class="step-num">07</span> Activar Licencia</a>
+      <a href="#problemas"><span class="step-num">08</span> Solución de Problemas</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <!-- ─── 01 REQUISITOS ─── -->
+    <section id="requisitos" class="section">
+      <div class="section-eyebrow">Paso 01</div>
+      <h2>Requisitos del Sistema</h2>
+      <p class="section-desc">Antes de empezar, verificá que tu equipo y tu copia de GTA V cumplan con los requisitos mínimos.</p>
+
+      <div class="req-grid">
+        <div class="req-card">
+          <div class="req-card-icon">🎮</div>
+          <div class="req-card-label">Modo de juego</div>
+          <div class="req-card-value">GTA V Story Mode únicamente</div>
+        </div>
+        <div class="req-card">
+          <div class="req-card-icon">🪟</div>
+          <div class="req-card-label">Sistema operativo</div>
+          <div class="req-card-value">Windows 10 / 11 64-bit</div>
+        </div>
+        <div class="req-card">
+          <div class="req-card-icon">🧠</div>
+          <div class="req-card-label">RAM mínima / recomendada</div>
+          <div class="req-card-value">8 GB mín. / 16 GB rec.</div>
+        </div>
+        <div class="req-card">
+          <div class="req-card-icon">🖥️</div>
+          <div class="req-card-label">Gráfica</div>
+          <div class="req-card-value">Compatible con DirectX 11</div>
+        </div>
+        <div class="req-card">
+          <div class="req-card-icon">🔖</div>
+          <div class="req-card-label">Versión GTA V</div>
+          <div class="req-card-value">1.0.2060.1 o superior</div>
+        </div>
+        <div class="req-card">
+          <div class="req-card-icon">🚀</div>
+          <div class="req-card-label">Launcher</div>
+          <div class="req-card-value">Steam · Epic Games · Rockstar</div>
+        </div>
+      </div>
+
+      <div class="alert alert-warn">
+        <div class="alert-icon">⚠</div>
+        <p><strong>No usar en GTA Online</strong>El mod NO es compatible con GTA Online. Usarlo en modo online puede resultar en el baneo permanente de tu cuenta. Jugá siempre en Story Mode.</p>
+      </div>
+    </section>
+
+    <!-- ─── 02 CONTENIDO DEL ZIP ─── -->
+    <section id="contenido-zip" class="section">
+      <div class="section-eyebrow">Paso 02</div>
+      <h2>Contenido del ZIP</h2>
+      <p class="section-desc">Al descomprimir el archivo descargado desde Gumroad vas a encontrar la siguiente estructura. Familiarizate con ella antes de continuar.</p>
+
+      <div class="zip-box">
+<span class="dir">📦 GX_Survival_Mod_v1.0.0.zip</span>
+   │
+   ├── <span class="key-file">GXSurvivalMod_Setup_1.0.0.exe</span> <span class="comment">← Instalador automático del mod</span>
+   ├── <span class="key-file">Guía_de_Instalación.html</span>      <span class="comment">← Esta guía (podés abrirla desde acá)</span>
+   ├── <span class="key-file">README.txt</span>                    <span class="comment">← Créditos y fuentes de terceros</span>
+   │
+   └── <span class="dir">📁 Instalar Personajes/</span>           <span class="comment">← Instalación manual requerida</span>
+         ├── <span class="key-file">OpenIVSetup.exe</span>         <span class="comment">← Instalador de OpenIV</span>
+         ├── <span class="key-file">gameconfig.xml</span>          <span class="comment">← Reemplaza el gameconfig vía OpenIV</span>
+         └── <span class="key-file">GX_PEDS_PACK.oiv</span>        <span class="comment">← Paquete de personajes add-on</span>
+      </div>
+
+      <div class="alert alert-tip">
+        <div class="alert-icon">💡</div>
+        <p><strong>Dos pasos de instalación</strong><code>GXSurvivalMod_Setup_1.0.0.exe</code> instala el mod automáticamente. La carpeta <strong>"Instalar Personajes"</strong> requiere pasos manuales con OpenIV — se explica en el Paso 04.</p>
+      </div>
+    </section>
+
+    <!-- ─── 03 INSTALADOR ─── -->
+    <section id="instalador" class="section">
+      <div class="section-eyebrow">Paso 03</div>
+      <h2>Instalar el Mod</h2>
+      <p class="section-desc">El instalador automático se encarga de copiar todos los archivos del mod, dependencias y configuraciones en la ubicación correcta de GTA V.</p>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">PASO 1</div>
+          <div class="step-title">Cerrar GTA V</div>
+        </div>
+        <div class="step-body">
+          <p>Asegurate de que <strong>GTA V esté completamente cerrado</strong> antes de ejecutar el instalador. Instalarlo con el juego abierto puede generar errores o dejar archivos corruptos.</p>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">PASO 2</div>
+          <div class="step-title">Ejecutar el Instalador</div>
+        </div>
+        <div class="step-body">
+          <ol class="num-steps">
+            <li>Hacé clic derecho en <code>GXSurvivalMod_Setup_1.0.0.exe</code> y seleccioná <strong>"Ejecutar como administrador"</strong>.</li>
+            <li>Si Windows muestra una advertencia de SmartScreen, hacé clic en <strong>"Más información" → "Ejecutar de todas formas"</strong>.</li>
+            <li>El instalador va a detectar automáticamente la ubicación de GTA V (Steam, Rockstar Launcher o Epic Games).</li>
+            <li>Si no detecta tu instalación automáticamente, seleccioná <strong>"Buscar manualmente..."</strong> y navegá hasta la carpeta donde está <code>GTA5.exe</code>.</li>
+            <li>Seguí los pasos del asistente y hacé clic en <strong>"Instalar"</strong>.</li>
+          </ol>
+
+          <div class="img-placeholder">
+            <div class="img-placeholder-icon">🖼️</div>
+            <div class="img-placeholder-label">Captura — Pantalla principal del instalador</div>
+            <div class="img-placeholder-desc">Reemplazar con captura de GXSurvivalMod_Setup_1.0.0.exe mostrando la pantalla de bienvenida e instalación.</div>
+          </div>
+
+          <div class="img-placeholder">
+            <div class="img-placeholder-icon">✅</div>
+            <div class="img-placeholder-label">Captura — Instalación exitosa</div>
+            <div class="img-placeholder-desc">Reemplazar con captura de la pantalla final del instalador confirmando que la instalación fue exitosa.</div>
+          </div>
+
+          <div class="alert alert-tip">
+            <div class="alert-icon">💡</div>
+            <p><strong>¿Ya tenías el mod instalado manualmente?</strong> El instalador es inteligente: los archivos de configuración que ya existan (<code>.ini</code>, <code>config.yml</code>) no se sobreescriben, preservando tu configuración anterior.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">PASO 3</div>
+          <div class="step-title">Qué instala el instalador</div>
+        </div>
+        <div class="step-body">
+          <p>El instalador copia automáticamente los siguientes componentes en sus ubicaciones correctas:</p>
+          <div class="folder-tree">
+<span class="dir">📁 Grand Theft Auto V/</span>
+   ├── ScriptHookV.dll
+   ├── dinput8.dll · xinput1_4.dll · MinHook.x64.dll
+   ├── ScriptHookVDotNet.asi · .ini · 2.dll · 3.dll
+   ├── OpenIV.asi
+   ├── HeapAdjuster.asi · .ini
+   ├── PackfileLimitAdjuster.asi · .ini
+   ├── Menyoo.asi
+   ├── <span class="dir">📁 menyooStuff/</span>                 <span class="comment">← Archivos de Menyoo</span>
+   └── <span class="dir">📁 scripts/</span>
+         ├── <span class="key-file">GX Survival Mod.dll</span>  <span class="comment">← Mod principal</span>
+         ├── GTAVWebhook.dll · System.Net.Http.dll · System.Web.dll
+         ├── config.yml · PedStatus.ini · gx_survival_settings.ini
+         └── gx_npc_settings_group_1-4.ini · (y más configs)
+          </div>
+          <p style="margin-top:8px;">Además, si no tenés instalado <strong>.NET Desktop Runtime 8.0</strong>, el instalador lo descarga e instala automáticamente (requerido para GX Live).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 04 PERSONAJES ─── -->
+    <section id="personajes" class="section">
+      <div class="section-eyebrow">Paso 04</div>
+      <h2>Instalar Personajes (OpenIV)</h2>
+      <p class="section-desc">El paquete de personajes y el gameconfig deben instalarse manualmente usando OpenIV. Este paso es necesario para que los NPCs personalizados aparezcan en el juego.</p>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">PASO 1</div>
+          <div class="step-title">Instalar OpenIV</div>
+        </div>
+        <div class="step-body">
+          <ol class="num-steps">
+            <li>Abrí la carpeta <strong>"Instalar Personajes"</strong> del ZIP.</li>
+            <li>Ejecutá <code>OpenIVSetup.exe</code> como administrador y completá la instalación.</li>
+            <li>Al abrir OpenIV por primera vez, seleccioná <strong>Grand Theft Auto V</strong> y apuntá a la <strong>carpeta raíz del juego</strong> — es la carpeta que contiene <code>GTA5.exe</code>. Rutas comunes según tu plataforma:
+              <ul style="margin-top:8px;">
+                <li><strong>Steam:</strong> <code>C:\Program Files (x86)\Steam\steamapps\common\Grand Theft Auto V</code></li>
+                <li><strong>Epic Games:</strong> <code>C:\Program Files\Epic Games\GTAV</code></li>
+                <li><strong>Rockstar:</strong> <code>C:\Program Files\Rockstar Games\Grand Theft Auto V</code></li>
+              </ul>
+            </li>
+          </ol>
+
+          <div class="img-placeholder">
+            <div class="img-placeholder-icon">🖼️</div>
+            <div class="img-placeholder-label">Captura — OpenIV primer inicio</div>
+            <div class="img-placeholder-desc">Reemplazar con captura de OpenIV mostrando la pantalla de selección de juego y dónde apuntar a la carpeta de GTA V.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">PASO 2</div>
+          <div class="step-title">Instalar el GameConfig</div>
+        </div>
+        <div class="step-body">
+          <p>El <code>gameconfig.xml</code> ajusta los límites internos del juego para soportar más personajes y mods sin crashear.</p>
+          <ol class="num-steps">
+            <li>Abrí <strong>OpenIV</strong>.</li>
+            <li>Activá el modo <strong>"Edit Mode"</strong> haciendo clic en el botón rojo que dice <strong>"Edit Mode"</strong> en la barra superior derecha de OpenIV. Sin este modo activo, no vas a poder modificar archivos.
+              <div class="img-placeholder" style="min-height:120px;margin-top:12px;">
+                <div class="img-placeholder-icon">🖼️</div>
+                <div class="img-placeholder-label">Captura — Botón Edit Mode en OpenIV</div>
+                <div class="img-placeholder-desc">Reemplazar con captura de OpenIV resaltando el botón rojo "Edit Mode" en la barra superior.</div>
+              </div>
+            </li>
+            <li>Navegá dentro de OpenIV (no en el Explorador de Windows) a: <code>mods / update / update.rpf / common / data</code> — esta es una ruta interna que existe solo dentro de OpenIV.
+              <div class="img-placeholder" style="min-height:120px;margin-top:12px;">
+                <div class="img-placeholder-icon">🖼️</div>
+                <div class="img-placeholder-label">Captura — Ruta dentro de OpenIV</div>
+                <div class="img-placeholder-desc">Reemplazar con captura de OpenIV navegado hasta mods/update/update.rpf/common/data.</div>
+              </div>
+            </li>
+            <li>Con esa carpeta abierta en OpenIV, arrastrá el archivo <code>gameconfig.xml</code> desde la carpeta <strong>"Instalar Personajes"</strong> del ZIP directamente a la ventana de OpenIV.</li>
+            <li>Confirmá el reemplazo si OpenIV lo solicita.</li>
+          </ol>
+          <div class="alert alert-warn">
+            <div class="alert-icon">⚠</div>
+            <p><strong>Siempre instalá dentro de la carpeta mods\</strong> OpenIV debe instalar el archivo en <code>mods\update\update.rpf</code>, NO en el <code>update.rpf</code> original del juego. Si no ves la carpeta <code>mods\</code>, ejecutá primero el instalador del mod (Paso 03).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">PASO 3</div>
+          <div class="step-title">Instalar el Paquete de Personajes</div>
+        </div>
+        <div class="step-body">
+          <ol class="num-steps">
+            <li>Con OpenIV abierto, andá a <strong>Tools → Package Installer</strong>.</li>
+            <li>Seleccioná el archivo <code>GX_PEDS_PACK.oiv</code> desde la carpeta "Instalar Personajes".</li>
+            <li>En la ventana que aparece, elegí instalar en la carpeta <strong>mods</strong> (no en el juego directo).</li>
+            <li>Hacé clic en <strong>"Install"</strong> y esperá a que termine.</li>
+          </ol>
+          <div class="alert alert-tip">
+            <div class="alert-icon">💡</div>
+            <p><strong>Siempre elegí la carpeta mods</strong> cuando OpenIV pregunte dónde instalar el paquete. Esto protege los archivos originales del juego y facilita desinstalar si es necesario.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 05 BATTLEYE ─── -->
+    <section id="battleye" class="section">
+      <div class="section-eyebrow">Paso 05</div>
+      <h2>Deshabilitar BattlEye</h2>
+      <p class="section-desc">BattlEye es el sistema anti-cheat de GTA V. Para que los mods funcionen en Story Mode, es necesario deshabilitarlo antes de iniciar el juego. Hay dos métodos — usá el que corresponde a tu situación.</p>
+
+      <div class="alert alert-tip" style="margin-bottom:24px;">
+        <div class="alert-icon">💡</div>
+        <p><strong>¿Cuál método usar?</strong> Si compraste GTA V en <strong>Rockstar</strong>, usá el Método A. Si compraste en <strong>Steam o Epic Games</strong>, igual tenés el Rockstar Games Launcher instalado — intentá el Método A primero. Si no encontrás la opción, usá el Método B que funciona para todas las plataformas.</p>
+      </div>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">Método A</div>
+          <div class="step-title">Desde el Rockstar Games Launcher</div>
+        </div>
+        <div class="step-body">
+          <ol class="num-steps">
+            <li>Abrí el <strong>Rockstar Games Launcher</strong>.</li>
+            <li>Ir a <strong>Configuración → GTA V → Opciones del Juego</strong>.</li>
+            <li>Buscá la opción <strong>"BattlEye Anti-Cheat"</strong> y desactivala.</li>
+            <li>Reiniciá el launcher para aplicar los cambios.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">Método B</div>
+          <div class="step-title">Editar commandline.txt — Funciona en todas las plataformas</div>
+        </div>
+        <div class="step-body">
+          <ol class="num-steps">
+            <li>Navegá a la <strong>carpeta raíz de GTA V</strong>.</li>
+            <li>Buscá el archivo <code>commandline.txt</code>. Si no existe, crealo con el Bloc de Notas.</li>
+            <li>Abrilo y agregá la siguiente línea:</li>
+          </ol>
+          <div class="folder-tree" style="margin-top:12px;padding:16px 22px;line-height:1.4;">-nobattleeye</div>
+          <p style="margin-top:12px;">Guardá el archivo y reiniciá el juego.</p>
+        </div>
+      </div>
+
+      <div class="alert alert-warn">
+        <div class="alert-icon">⚠</div>
+        <p><strong>Solo afecta Story Mode</strong>Deshabilitar BattlEye no afecta el modo online. No intentes jugar GTA Online con mods activos bajo ninguna circunstancia.</p>
+      </div>
+    </section>
+
+    <!-- ─── 06 GX LIVE ─── -->
+    <section id="gxlive" class="section">
+      <div class="section-eyebrow">Paso 06</div>
+      <h2>Conectar con GX Live</h2>
+      <p class="section-desc">GX Survival Mod trabaja junto a GX Live, la app de escritorio que conecta los eventos de TikTok Live con acciones dentro del juego.</p>
+
+      <div class="flow-row">
+        <div class="flow-item">
+          <div class="flow-num">01 — VIEWER</div>
+          <div class="flow-title">Regala o interactúa</div>
+          <div class="flow-desc">Un viewer envía un regalo o interactúa en tu TikTok Live.</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+          <div class="flow-num">02 — GX LIVE</div>
+          <div class="flow-title">Captura el evento</div>
+          <div class="flow-desc">GX Live detecta el evento en tiempo real desde la app de escritorio.</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-item">
+          <div class="flow-num">03 — GTA V</div>
+          <div class="flow-title">Acción en el juego</div>
+          <div class="flow-desc">El mod ejecuta la acción: spawn de NPCs, vehículos, efectos y más.</div>
+        </div>
+      </div>
+
+      <div class="step-block" style="margin-top:28px;">
+        <div class="step-header">
+          <div class="step-badge">SETUP</div>
+          <div class="step-title">Configurar GX Live</div>
+        </div>
+        <div class="step-body">
+          <ol class="num-steps">
+            <li>Descargá e instalá <strong>GX Live</strong> desde la web oficial de GX Interactive.</li>
+            <li>Creá tu cuenta o iniciá sesión con tus credenciales.</li>
+            <li>Conectá tu cuenta de TikTok desde la pantalla principal de GX Live.</li>
+            <li>Configurá los mapeos de regalo → acción en la sección <strong>"Eventos"</strong>.</li>
+            <li>Iniciá GTA V con el mod instalado y activo.</li>
+            <li>Presioná <strong>"Iniciar Stream"</strong> en GX Live y comenzá tu live en TikTok.</li>
+          </ol>
+          <div class="alert alert-tip">
+            <div class="alert-icon">💡</div>
+            <p>Para una mejor experiencia, ejecutá GX Live en una segunda pantalla para monitorear los eventos del live en tiempo real.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 08 LICENCIA ─── -->
+    <section id="licencia" class="section">
+      <div class="section-eyebrow">Paso 08</div>
+      <h2>Activar tu Licencia</h2>
+      <p class="section-desc">El mod requiere activación de licencia vinculada a tu dispositivo. La activación es manual y se gestiona en un plazo de hasta 24 horas hábiles.</p>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">PASO 1</div>
+          <div class="step-title">Obtener tu comprobante</div>
+        </div>
+        <div class="step-body">
+          <p>Después de comprar, Gumroad te envía un email de confirmación con el comprobante de compra. Guardalo — lo vas a necesitar para activar tu licencia.</p>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">PASO 2</div>
+          <div class="step-title">Contactar al equipo</div>
+        </div>
+        <div class="step-body">
+          <p>Contactanos por alguno de estos canales con tu comprobante de compra:</p>
+          <ul style="list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-sub);">
+              <span style="color:var(--red);font-size:18px;">💬</span>
+              <span><strong style="color:var(--text);">Discord oficial</strong> → <a href="https://discord.gg/Q2HD5RZ5e" target="_blank" style="color:var(--red);">discord.gg/Q2HD5RZ5e</a></span>
+            </li>
+            <li style="display:flex;align-items:center;gap:12px;font-size:14px;color:var(--text-sub);">
+              <span style="color:var(--red);font-size:18px;">🎵</span>
+              <span><strong style="color:var(--text);">TikTok</strong> → <a href="https://www.tiktok.com/@gxinteractive" target="_blank" style="color:var(--red);">@gxinteractive</a></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-header">
+          <div class="step-badge">PASO 3</div>
+          <div class="step-title">Activación completada</div>
+        </div>
+        <div class="step-body">
+          <p>Una vez verificado el comprobante, tu licencia queda activada y vinculada a tu dispositivo de forma permanente. A partir de ese momento el mod funciona sin restricciones.</p>
+          <div class="alert alert-tip">
+            <div class="alert-icon">💡</div>
+            <p><strong>¿Cambiaste de PC?</strong> Si necesitás transferir tu licencia a otro dispositivo, contactanos por Discord o TikTok y lo gestionamos sin costo adicional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-warn">
+        <div class="alert-icon">⚠</div>
+        <p><strong>Plazo de activación</strong>La activación se gestiona manualmente en un plazo de hasta 24 horas hábiles. Si pasado ese tiempo no recibiste confirmación, contactanos nuevamente.</p>
+      </div>
+    </section>
+
+    <!-- ─── 07 PROBLEMAS ─── -->
+    <section id="problemas" class="section">
+      <div class="section-eyebrow">Paso 08</div>
+      <h2>Solución de Problemas</h2>
+      <p class="section-desc">Si algo no funciona como esperás, revisá los casos más frecuentes a continuación.</p>
+
+      <div class="trouble-item">
+        <div class="trouble-q">El juego crashea al inicio</div>
+        <div class="trouble-ans">
+          <ul>
+            <li>Verificá que la versión de <code>ScriptHookV.dll</code> sea compatible con tu versión de GTA V.</li>
+            <li>Actualizá ScriptHookV desde <a href="http://alexander.blade.net" target="_blank" style="color:var(--red);">alexander.blade.net</a>.</li>
+            <li>Confirmá que <code>dinput8.dll</code> esté en la carpeta raíz del juego.</li>
+            <li>Si instalaste el paquete de personajes, verificá que el <code>gameconfig.xml</code> esté instalado correctamente vía OpenIV.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">El mod no aparece en el juego</div>
+        <div class="trouble-ans">
+          <ul>
+            <li>Confirmá que <code>GX Survival Mod.dll</code> esté dentro de la carpeta <code>scripts/</code>.</li>
+            <li>Verificá que <code>ScriptHookVDotNet.asi</code> esté en la raíz del juego.</li>
+            <li>Revisá el log en: <code>scripts/ScriptHookVDotNet.log</code> para ver errores detallados.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">"Game version is not supported"</div>
+        <div class="trouble-ans">
+          <ul>
+            <li>GTA V fue actualizado y ScriptHookV aún no tiene soporte para la nueva versión.</li>
+            <li>Esperá a que Alexander Blade publique una actualización en <a href="http://alexander.blade.net" target="_blank" style="color:var(--red);">alexander.blade.net</a>.</li>
+          </ul>
+          <div class="alert alert-tip" style="margin-top:12px;">
+            <div class="alert-icon">💡</div>
+            <p>Después de una actualización de GTA V es normal esperar algunos días hasta que ScriptHookV sea actualizado. Esto está fuera del control de GX Interactive.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">Los NPCs personalizados no aparecen</div>
+        <div class="trouble-ans">
+          <ul>
+            <li>Verificá que <code>GX_PEDS_PACK.oiv</code> fue instalado correctamente con OpenIV en la carpeta <code>mods</code>.</li>
+            <li>Confirmá que el <code>gameconfig.xml</code> también fue instalado vía OpenIV.</li>
+            <li>Asegurate de que <code>OpenIV.asi</code> esté en la carpeta raíz (el instalador lo coloca automáticamente).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="trouble-item">
+        <div class="trouble-q">Los regalos de TikTok no generan acciones</div>
+        <div class="trouble-ans">
+          <ul>
+            <li>Asegurate de estar conectado a tu live en TikTok desde GX Live.</li>
+            <li>Verificá que los mapeos de regalo estén configurados en la sección <strong>"Eventos"</strong>.</li>
+            <li>Confirmá que el mod esté activo en pantalla al iniciar el juego.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 40px; padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--red);">
+        <p style="font-family: var(--font-display); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--red); margin-bottom: 8px;">¿Necesitás más ayuda?</p>
+        <p style="font-size: 14px; color: var(--text-sub); margin: 0;">Unite al servidor de Discord de GX Interactive en <a href="https://discord.gg/Q2HD5RZ5e" target="_blank" style="color:var(--red);">discord.gg/Q2HD5RZ5e</a> o contactanos por TikTok en <a href="https://www.tiktok.com/@gxinteractive" target="_blank" style="color:var(--red);">@gxinteractive</a> para soporte directo del equipo.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-brand">GX <span>INTERACTIVE</span></div>
+  <div class="footer-copy">GX Survival Mod — Guía de Instalación Oficial · © 2026 GX Interactive. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.sidebar nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.sidebar nav a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
